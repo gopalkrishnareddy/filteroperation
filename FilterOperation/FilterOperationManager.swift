@@ -15,16 +15,11 @@ protocol Searchable {
 
 class FilterOperationManager: NSObject {
     
-    private var allItems : Array<Any>
+    private var allItems : Array<Searchable>
     
-    init(allItems: Array<Any>) {
+    init(allItems: Array<Searchable>) {
         
-        guard let searchableList = allItems as? Array<Searchable> else {
-            print("")
-            
-            self.allItems = []
-            return
-        }
+        let searchableList = allItems
         
         self.allItems = searchableList
     }
@@ -36,14 +31,14 @@ class FilterOperationManager: NSObject {
     
     //MARK: - Filtered items data
     
-    private var filteredItemsLookup = Dictionary<String,Array<Any>>()
+    private var filteredItemsLookup = Dictionary<String,Array<Searchable>>()
     
-    private var filteredItems = Array<Any>()
+    private var filteredItems = Array<Searchable>()
     
     var searchKeyword: String?
     
     //MARK: - Public Properties & Functions
-    var searchCompleted: ((Array<Any>) -> Void)?
+    var searchCompleted: ((Array<Searchable>) -> Void)?
     
     // Filter via search keyword.
     func filter(_ searchKeyword: String) {

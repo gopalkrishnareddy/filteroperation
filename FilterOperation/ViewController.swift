@@ -95,7 +95,6 @@ extension ViewController : UITextFieldDelegate{
     // MARK: - UITextFieldDelegate
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        self.searchTextField! setIntelliKeyboardType(string)
         
         if string == "\n" {
             self.filterManager?.searchKeyword = nil
